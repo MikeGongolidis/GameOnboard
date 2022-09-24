@@ -4,7 +4,7 @@ Full stack game development with friends
 
 ## Board games currently supported:
 
-None
+1. [Experimental] tic-tac-toe
 
 ## Goal:
 
