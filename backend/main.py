@@ -1,5 +1,11 @@
 import websockets
 import asyncio
+import logging
+
+logger = logging.getLogger('websockets')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+
 
 # Test this by running python -m websockets ws://localhost:8765 on a separate terminal
 
@@ -8,12 +14,9 @@ PORT = 8765
 
 async def handler(websocket):
     async for message in websocket:
-        print(f"Received: {message}")
-        print(f"Responding with: {message}")
         await websocket.send(message)
 
 async def main():
-    print(f'Opening websocket at ws://{DOMAIN}:{PORT}...')
     async with websockets.serve(handler,DOMAIN,PORT):
         await asyncio.Future()
 
