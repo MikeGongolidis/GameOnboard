@@ -133,3 +133,86 @@ footer {
   text-align: center;
   padding: 2.5rem;
 }
+
+/* Media querries */
+@media (max-width: 650px) {
+  .primary-heading {
+    font-size: 4rem;
+    gap: 4rem;
+  }
+  .gg-games {
+    display: block;
+    width: 24px;
+    height: 12px;
+    scale: 1.6;
+  }
+
+  .container {
+    margin: 7rem auto 15rem;
+    height: 50rem;
+    width: 30rem;
+  }
+
+  .welcome {
+    font-size: 2rem;
+    padding: 3rem;
+  }
+
+  .welcome-msg {
+    margin-bottom: 3.5rem;
+  }
+
+  .select-game {
+    gap: 3.2rem;
+  }
+
+  .btn {
+    width: 20rem;
+    font-size: 1.6rem;
+  }
+
+  .copyright {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .primary-heading {
+    font-size: 3.2rem;
+    gap: 3.2rem;
+  }
+  .gg-games {
+    display: block;
+    width: 24px;
+    height: 12px;
+    scale: 1.4;
+  }
+
+  .container {
+    margin: 5rem auto 15rem;
+    height: 40rem;
+    width: 25rem;
+  }
+
+  .welcome {
+    font-size: 1.6rem;
+    padding: 2rem;
+  }
+
+  .welcome-msg {
+    margin-bottom: 2.5rem;
+  }
+
+  .select-game {
+    gap: 2.6rem;
+  }
+
+  .btn {
+    width: 15rem;
+    font-size: 1rem;
+  }
+
+  .copyright {
+    font-size: 1rem;
+  }
+}
