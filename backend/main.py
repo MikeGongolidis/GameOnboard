@@ -1,7 +1,7 @@
 import websockets
 import asyncio
 
-# Test this by running python -m websockets ws://localhost:
+# Test this by running python -m websockets ws://localhost:8765 on a separate terminal
 
 DOMAIN = 'localhost'
 PORT = 8765
