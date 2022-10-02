@@ -57,8 +57,8 @@ body {
 }
 
 .container {
-  margin: 10rem auto 35rem;
-  height: 65rem;
+  margin: 10rem auto;
+  height: 60rem;
   width: 50rem;
   background-color: var(--container-color);
   box-shadow: 0 14px 18px 0 rgba(0, 0, 0, 0.6);
@@ -124,6 +124,7 @@ body {
 
 /* Footer */
 footer {
+  margin: 35rem auto 0;
   border-top: 1px solid #262222;
 }
 
@@ -148,9 +149,9 @@ footer {
   }
 
   .container {
-    margin: 7rem auto 15rem;
+    margin: 7rem auto;
     height: 50rem;
-    width: 30rem;
+    width: 35rem;
   }
 
   .welcome {
@@ -171,6 +172,10 @@ footer {
     font-size: 1.6rem;
   }
 
+  footer {
+    margin: 35rem auto 0;
+  }
+
   .copyright {
     font-size: 1.1rem;
   }
@@ -189,9 +194,9 @@ footer {
   }
 
   .container {
-    margin: 5rem auto 15rem;
+    margin: 5rem auto;
     height: 40rem;
-    width: 25rem;
+    width: 28rem;
   }
 
   .welcome {
@@ -210,6 +215,10 @@ footer {
   .btn {
     width: 15rem;
     font-size: 1rem;
+  }
+
+  footer {
+    margin: 35rem auto 0;
   }
 
   .copyright {
