@@ -1,0 +1,35 @@
+/* Variable declaration */
+:root {
+  --default-color: #f2f6d0;
+  --container-color: #c0a9b0;
+  --button-letter-color: #fff;
+  --hover-color: #7160dee6;
+  --text-color: #434343;
+  --font-sm: 300;
+  --font-md: 400;
+  --font-lg: 500;
+  --font-xlg: 700;
+}
+
+/* ******** Global Reset **********/
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto Mono", monospace;
+  line-height: 1;
+  font-weight: var(--font-md);
+  color: var(--text-color);
+  background-color: var(--default-color);
+  box-sizing: border-box;
+}
+/* **************************** */
