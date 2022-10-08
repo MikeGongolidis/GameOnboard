@@ -4,6 +4,11 @@ import asyncio
 import websockets
 import logging
 
+logger = logging.getLogger('websockets')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
+
+
 from lobby import LobbyRoom
 from messages import MessageModel, MessageEnum
 
@@ -40,7 +45,6 @@ async def handler(player):
 # how/where to create the game object?
 # how to manage which player is playing? X/O or blue/red?
 # announce winner?
-
 
 async def main():
     async with websockets.serve(handler,DOMAIN,PORT):
