@@ -5,7 +5,7 @@
   --button-letter-color: #fff;
   --hover-color: #7160dee6;
   --button-color: #9d91e9;
-  --button-color-hover: #583eff;
+  --button-color-hover: #836fff;
   --text-color: #434343;
   --font-sm: 300;
   --font-md: 400;
@@ -56,6 +56,7 @@ body {
   margin: 0 auto;
   margin-top: 10rem;
   max-width: 55rem;
+  min-height: 55rem;
   background-color: #434343;
   border-radius: 1.5rem;
   border: 1rem solid #434343;
@@ -89,7 +90,12 @@ body {
 .start-game:hover {
   background-color: var(--button-color-hover);
   box-shadow: 2px 5px 3px 1px rgba(116, 116, 116, 0.717);
-  font-size: 2.6rem;
+  scale: 1.05;
+}
+
+.start-game:active {
+  scale: 0.98;
+  box-shadow: 1px 3px 3px 1px rgba(116, 116, 116, 0.717);
 }
 
 .cell {
