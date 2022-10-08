@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod
 
-
+from communication import PlayerEnum
 
 class Game(ABC):
 
     def __init__(self):
         self.moves = []
         self.winner = None
-        self.player1 = 1
-        self.player2 = 2
+        self.player1 = PlayerEnum.PLAYER1.value
+        self.player2 = PlayerEnum.PLAYER2.value
     
     @property
     def last_player(self):
@@ -48,6 +48,8 @@ class Connect4(Game):
         """
         player, column = message.player, message.column
 
+        assert player == self.player1 or player == self.player2
+
         if player == self.last_player:
             raise RuntimeError("It isn't your turn.")
 
@@ -75,16 +77,17 @@ class TicTacToe(Game):
         Check if game was won
 
         """
+        player, x, y = self.moves[-1]
         #check if previous move caused a win on vertical line 
-        if self.board[0][y] ==self.board[1][y] ==self.board[2][y]:
+        if self.board[0][y] == self.board[1][y] == self.board[2][y]:
             return True
 
         #check if previous move caused a win on horizontal line 
-        if self.board[x][0] ==self.board[x][1] ==self.board[x][2]:
+        if self.board[x][0] == self.board[x][1] == self.board[x][2]:
             return True
 
         #check if previous move was on the main diagonal and caused a win
-        if x == y and self.board[0][0] ==self.board[1][1] ==self.board[2][2]:
+        if x == y and self.board[0][0] == self.board[1][1] == self.board[2][2]:
             return True
 
         #check if previous move was on the secondary diagonal and caused a win
@@ -102,7 +105,10 @@ class TicTacToe(Game):
         Raises :exc:`RuntimeError` if the move is illegal.
 
         """
-        player, column, row = message.player,message.column,message.row
+        player, column, row = message.player, message.column, message.row
+
+        assert player == self.player1 or player == self.player2
+
 
         if player == self.last_player:
             # Raise smthing or wait or what?
