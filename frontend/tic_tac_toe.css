@@ -3,9 +3,15 @@
   --default-color: #f2f6d0;
   --container-color: #c0a9b0;
   --button-letter-color: #fff;
-  --hover-color: #7160dee6;
+  --hover-color: #7160def1;
   --button-color: #9d91e9;
   --button-color-hover: #836fff;
+  --invite-color: #93bcff;
+  --back-color: #e33256;
+  --find-game-color: #8bde8b;
+  --invite-hover-color: #6ba3ff;
+  --back-hover-color: #df0b35;
+  --find-game-hover-color: #76e476;
   --text-color: #434343;
   --font-sm: 300;
   --font-md: 400;
@@ -68,11 +74,37 @@ body {
   background-color: #dfdfdf;
 }
 
-.btn {
-  display: flex;
+.menu {
+  background-color: var(--container-color);
+  font-size: 2.4rem;
+  font-weight: 500;
+  border-radius: 12px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -105%);
+  max-width: 50rem;
+  padding: 0.5rem 5rem;
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+.menu-heading {
+  margin: 5rem auto 5rem;
+  text-align: center;
+  text-decoration: underline;
+  letter-spacing: 1px;
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin: 0 auto;
+  grid-column-gap: 2.5rem;
+  grid-row-gap: 2.5rem;
+  margin-bottom: 5rem;
 }
 
 .start-game {
@@ -87,8 +119,44 @@ body {
   font-weight: 700;
 }
 
+.find {
+  background-color: var(--find-game-color);
+  width: 100%;
+  height: 136px;
+}
+
+.inv {
+  background-color: var(--invite-color);
+  width: 100%;
+  height: 136px;
+}
+
+.back {
+  background-color: var(--back-color);
+  width: 100%;
+  height: 136px;
+}
+
 .start-game:hover {
   background-color: var(--button-color-hover);
+  box-shadow: 2px 5px 3px 1px rgba(116, 116, 116, 0.717);
+  scale: 1.05;
+}
+
+.inv:hover {
+  background-color: var(--invite-hover-color);
+  box-shadow: 2px 5px 3px 1px rgba(116, 116, 116, 0.717);
+  scale: 1.05;
+}
+
+.find:hover {
+  background-color: var(--find-game-hover-color);
+  box-shadow: 2px 5px 3px 1px rgba(116, 116, 116, 0.717);
+  scale: 1.05;
+}
+
+.back:hover {
+  background-color: var(--back-hover-color);
   box-shadow: 2px 5px 3px 1px rgba(116, 116, 116, 0.717);
   scale: 1.05;
 }
