@@ -176,6 +176,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 180px;
+  font-size: 6.4rem;
 }
 
 .cell-inner {
@@ -184,6 +185,14 @@ body {
 }
 
 /* Testing empty square (top-left)*/
-#one:hover {
-  background-color: #b7ffb7;
+#one:hover,
+#two:hover,
+#three:hover,
+#four:hover,
+#five:hover,
+#six:hover,
+#seven:hover,
+#eight:hover,
+#nine:hover {
+  background-color: #a4ffa4;
 }
