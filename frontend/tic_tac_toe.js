@@ -5,6 +5,8 @@ document.getElementById("back").addEventListener("click", function () {
 document.getElementById("start").addEventListener("click", function () {
   document.querySelector(".menu").style.opacity = 0;
   document.querySelector(".menu").style.visibility = "hidden";
+  document.querySelector(".game-board").style.opacity = 1;
+  document.querySelector(".game-board").style.visibility = "visible";
 });
 
 document.getElementById("inv").addEventListener("click", function () {
