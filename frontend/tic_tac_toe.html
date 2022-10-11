@@ -18,17 +18,51 @@
   <body>
     <h1 class="game-title">Tic-Tac-Toe</h1>
     <div class="game-board">
-      <div class="cell" id="1"><span class="cell-inner">X</span></div>
-      <div class="cell" id="2"><span class="cell-inner">O</span></div>
-      <div class="cell" id="3"><span class="cell-inner">X</span></div>
-      <div class="cell" id="4"><span class="cell-inner">O</span></div>
-      <div class="cell" id="5"><span class="cell-inner">X</span></div>
-      <div class="cell" id="6"><span class="cell-inner">O</span></div>
-      <div class="cell" id="7"><span class="cell-inner">X</span></div>
-      <div class="cell" id="8"><span class="cell-inner">O</span></div>
-      <div class="cell" id="9"><span class="cell-inner">X</span></div>
+      <div class="cell" id="one">
+        <span class="cell-inner" id="cell-one"></span>
+      </div>
+      <div class="cell" id="two">
+        <span class="cell-inner" id="cell-two"></span>
+      </div>
+      <div class="cell" id="three">
+        <span class="cell-inner" id="cell-three"></span>
+      </div>
+      <div class="cell" id="four">
+        <span class="cell-inner" id="cell-four"></span>
+      </div>
+      <div class="cell" id="five">
+        <span class="cell-inner" id="cell-five"></span>
+      </div>
+      <div class="cell" id="six">
+        <span class="cell-inner" id="cell-six"></span>
+      </div>
+      <div class="cell" id="seven">
+        <span class="cell-inner" id="cell-seven"></span>
+      </div>
+      <div class="cell" id="eight">
+        <span class="cell-inner" id="cell-eight"></span>
+      </div>
+      <div class="cell" id="nine">
+        <span class="cell-inner" id="cell-nine"></span>
+      </div>
     </div>
-    <div class="btn"><button class="start-game">Start Game</button></div>
+    <div class="menu">
+      <h2 class="menu-heading">MENU</h2>
+      <div class="menu-container">
+        <div class="btn">
+          <button class="start-game" id="start">Start Local Game</button>
+        </div>
+        <div class="btn btn-inv">
+          <button class="start-game inv" id="inv">Invite a Friend</button>
+        </div>
+        <div class="btn btn-find">
+          <button class="start-game find" id="find">Find Game</button>
+        </div>
+        <div class="btn btn-back">
+          <button class="start-game back" id="back">Back</button>
+        </div>
+      </div>
+    </div>
   </body>
   <script type="text/javascript" src="tic_tac_toe.js"></script>
 </html>
