@@ -35,6 +35,7 @@ let bottomRight = document.getElementById("nine");
 
 // Listen for click events on body
 // Turn simulation
+
 document.body.addEventListener("click", function (event) {
   if (topLeft.contains(event.target)) {
     if (player_1_active === true) {
@@ -112,10 +113,10 @@ document.body.addEventListener("click", function (event) {
       document.getElementById("cell-eight").innerHTML = "X";
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("eight").innerHTML = "O";
+      document.getElementById("cell-eight").innerHTML = "O";
       player_1_active = !player_1_active;
     }
-    document.getElementById("cell-eight").style.pointerEvents = "none";
+    document.getElementById("eight").style.pointerEvents = "none";
     console.log("Cell eight was selected");
   } else if (bottomRight.contains(event.target)) {
     if (player_1_active === true) {
@@ -129,3 +130,17 @@ document.body.addEventListener("click", function (event) {
     console.log("Cell nine was selected");
   }
 });
+
+// mike's solution ---> BUGS
+
+// document.getElementById("game-board").addEventListener("click", function (e) {
+//   if (player_1_active) {
+//     e.target.firstElementChild.innerHTML = "X";
+//     e.target.style.pointerEvents = "none";
+//     player_1_active = !player_1_active;
+//   } else {
+//     e.target.firstElementChild.innerHTML = "O";
+//     e.target.style.pointerEvents = "none";
+//     player_1_active = !player_1_active;
+//   }
+// });
