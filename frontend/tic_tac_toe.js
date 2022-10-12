@@ -28,25 +28,13 @@ let bottomLeft = document.getElementById("seven");
 let bottomMiddle = document.getElementById("eight");
 let bottomRight = document.getElementById("nine");
 // Listen for click events on body
-document.body.addEventListener("click", function (event) {
-  if (topLeft.contains(event.target)) {
-    document.getElementById("cell-one").innerHTML = "X";
-    // console.log("clicked inside");
-  } else if (topMiddle.contains(event.target)) {
-    document.getElementById("cell-two").innerHTML = "X";
-  } else if (topRight.contains(event.target)) {
-    document.getElementById("cell-three").innerHTML = "X";
-  } else if (middleLeft.contains(event.target)) {
-    document.getElementById("cell-four").innerHTML = "X";
-  } else if (middle.contains(event.target)) {
-    document.getElementById("cell-five").innerHTML = "X";
-  } else if (middleRight.contains(event.target)) {
-    document.getElementById("cell-six").innerHTML = "X";
-  } else if (bottomLeft.contains(event.target)) {
-    document.getElementById("cell-seven").innerHTML = "X";
-  } else if (bottomMiddle.contains(event.target)) {
-    document.getElementById("cell-eight").innerHTML = "X";
-  } else if (bottomRight.contains(event.target)) {
-    document.getElementById("cell-nine").innerHTML = "X";
-  }
-});
+
+// document.body.getElementById('game-board').addEventListener('click', function(event){
+
+// })
+
+// let board = 
+
+document.getElementById('game-board').addEventListener("click", function (e) {
+   e.target.firstElementChild.innerHTML = "X"
+})
