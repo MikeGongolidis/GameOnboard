@@ -1,3 +1,4 @@
+
 document.getElementById("back").addEventListener("click", function () {
   location.href = "http://localhost:5500/frontend/index.html";
 });
@@ -15,7 +16,6 @@ document.getElementById("inv").addEventListener("click", function () {
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Finding game for you. Please wait :)");
-});
 
 // LOCAL GAME SIMULATION
 
