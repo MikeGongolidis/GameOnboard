@@ -27,7 +27,8 @@ class Connect4(Game):
 
     def __init__(self):
         super().__init__()
-        self.columns = [0 for _ in range(7)]
+        self.top = [0 for _ in range(7)]
+
 
     def last_player_won(self):
         """
@@ -53,7 +54,7 @@ class Connect4(Game):
         if player == self.last_player:
             raise RuntimeError("It isn't your turn.")
 
-        row = self.columns[column]
+        row = self.top[column]
         if row == 6:
             raise RuntimeError("This slot is full.")
 
@@ -63,7 +64,7 @@ class Connect4(Game):
         if self.winner is None and self.last_player_won():
             self.winner = self.last_player
 
-        return _, _, row
+        return player, column, row
 
 class TicTacToe(Game):
 

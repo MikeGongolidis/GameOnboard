@@ -62,8 +62,9 @@ async def handler(player):
                 # Try to play player`s move
                 try:
                     turn, column, row = LOBBY.games[room_id].play(message)
-                except RuntimeError:
+                except RuntimeError as e:
                     # If invalid, let the player know
+                    print(e)
                     await player.send(json.dumps({"mtype":MessageEnum.INVALID_MOVE.value}))
                     continue
 
@@ -78,7 +79,7 @@ async def handler(player):
     
     finally:
         # Unregister player if connection closes
-        CONNECTIONS.remove(websocket)
+        CONNECTIONS.remove(player)
         websockets.broadcast(CONNECTIONS, json.dumps({"mtype":MessageEnum.NUM_CLIENTS.value,"num_clients": len(CONNECTIONS)}))
 
 

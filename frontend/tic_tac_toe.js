@@ -1,3 +1,12 @@
+
+let find = {"mtype":5,"game_type":1};
+let play = {"mtype":6,"player":1, "column":0,"row":0};
+
+let PLAYER = 0;
+
+let socket = new WebSocket("ws://127.0.0.1:8765");
+
+
 document.getElementById("back").addEventListener("click", function () {
   location.href = "http://localhost:5500/frontend/index.html";
 });
@@ -15,26 +24,12 @@ document.getElementById("inv").addEventListener("click", function () {
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Finding game for you. Please wait :)");
+
 });
 
-// Testing clicks on empty square
-let topLeft = document.getElementById("one");
-let topMiddle = document.getElementById("two");
-let topRight = document.getElementById("three");
-let middleLeft = document.getElementById("four");
-let middle = document.getElementById("five");
-let middleRight = document.getElementById("six");
-let bottomLeft = document.getElementById("seven");
-let bottomMiddle = document.getElementById("eight");
-let bottomRight = document.getElementById("nine");
-// Listen for click events on body
 
-// document.body.getElementById('game-board').addEventListener('click', function(event){
-
-// })
-
-// let board = 
 
 document.getElementById('game-board').addEventListener("click", function (e) {
-   e.target.firstElementChild.innerHTML = "X"
+  console.log(e.target)
+   //e.target.firstElementChild.innerHTML = "X"
 })

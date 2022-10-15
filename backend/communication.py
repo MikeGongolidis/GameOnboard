@@ -37,8 +37,6 @@ class MessageModel(BaseModel):
     row: Optional[int]
     room_id: Optional[str]
     num_clients: Optional[int]
-
-
-            
+         
         
 

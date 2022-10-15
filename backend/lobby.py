@@ -66,6 +66,6 @@ class LobbyRoom():
 
         except asyncio.QueueEmpty:
 
-            await self.ttt_queue.put(player) if game_type == GameEnum.TTT.value else self.c4_queue.put(player)
+            await self.ttt_queue.put(player) if game_type == GameEnum.TTT.value else await self.c4_queue.put(player)
 
             await player.send(json.dumps({"mtype":MessageEnum.WAIT.value}))
