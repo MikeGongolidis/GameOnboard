@@ -1,3 +1,32 @@
+// Identify the messages that are being sent back and forth:
+// 1.messages client is sending to the server:
+  // INVITE = 1
+  // JOIN = 3
+  // START_GAME = 4
+  // FIND = 5
+  // EXIT_GAME = 7
+// 2.messages server is sending to the client:
+  // WAIT = 2
+  // PLAY = 6
+  // INVALID_MOVE = 8
+  // WINNER = 9
+  // NUM_CLIENTS = 10
+  // INVALID_MESSAGE = 11
+
+// Create the dictionary objects in js with the default communication messages.
+let messages = {"INVITE": 1, 
+"WAIT" : 2,
+"JOIN" : 3,
+"START_GAME" : 4,
+"FIND" : 5,
+"PLAY" : 6,
+"EXIT_GAME" : 7,
+"INVALID_MOVE" : 8,
+"WINNER" : 9,
+"NUM_CLIENTS" : 10,
+"INVALID_MESSAGE" : 11}
+
+let socket = new WebSocket("ws://127.0.0.1:8765");
 
 document.getElementById("back").addEventListener("click", function () {
   location.href = "http://localhost:5500/frontend/index.html";
@@ -16,11 +45,11 @@ document.getElementById("inv").addEventListener("click", function () {
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Finding game for you. Please wait :)");
+});
 
 // LOCAL GAME SIMULATION
 
 let player_1_active = true;
-// let player_2_active = false;
 
 // Testing clicks on empty square
 let topLeft = document.getElementById("one");
@@ -47,7 +76,6 @@ document.body.addEventListener("click", function (event) {
     }
     document.getElementById("one").style.pointerEvents = "none";
     console.log("Cell one was selected");
-    // console.log("clicked inside");
   } else if (topMiddle.contains(event.target)) {
     if (player_1_active === true) {
       document.getElementById("cell-two").innerHTML = "X";
@@ -131,16 +159,4 @@ document.body.addEventListener("click", function (event) {
   }
 });
 
-// mike's solution ---> BUGS
 
-// document.getElementById("game-board").addEventListener("click", function (e) {
-//   if (player_1_active) {
-//     e.target.firstElementChild.innerHTML = "X";
-//     e.target.style.pointerEvents = "none";
-//     player_1_active = !player_1_active;
-//   } else {
-//     e.target.firstElementChild.innerHTML = "O";
-//     e.target.style.pointerEvents = "none";
-//     player_1_active = !player_1_active;
-//   }
-// });
