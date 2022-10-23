@@ -1,8 +1,4 @@
 
-
-
-
-
 // WRITE DEFAULT COMM MESSAGES
 let find = {"mtype":5,"game_type":2};
 let play = {"mtype":6,"player":0, "column":0,"row":0};

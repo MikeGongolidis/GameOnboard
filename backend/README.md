@@ -23,7 +23,7 @@ To initiate the server, execute ```python main.py```
 
 You will see the server up and running!  
 
-You can test the server by opening a new terminal window, getting in the same folder (activate virtual environment again) and execute: ```python websockets ws://localhost:8765/```  
+You can test the server by opening a new terminal window, getting in the same folder (activate virtual environment again) and execute: ```python -m websockets ws://localhost:8765/```  
 
 You will be able to send messages from the new terminal window and see them in the server terminal. Play around!  
 

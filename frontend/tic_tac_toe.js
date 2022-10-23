@@ -14,18 +14,13 @@
   // INVALID_MESSAGE = 11
 
 // Create the dictionary objects in js with the default communication messages.
-let messages = {"INVITE": 1, 
-"WAIT" : 2,
-"JOIN" : 3,
-"START_GAME" : 4,
-"FIND" : 5,
-"PLAY" : 6,
-"EXIT_GAME" : 7,
-"INVALID_MOVE" : 8,
-"WINNER" : 9,
-"NUM_CLIENTS" : 10,
-"INVALID_MESSAGE" : 11}
+let find = {"mtype":5,"game_type":1};
+let play = {"mtype":6,"player":0, "column":0,"row":0};
+let invite = {"mtype":1, "game_type":1}
+let exit = {"mtype":7}
+let join = {"mtype":3}
 
+let PLAYER;
 let socket = new WebSocket("ws://127.0.0.1:8765");
 
 document.getElementById("back").addEventListener("click", function () {
@@ -44,7 +39,7 @@ document.getElementById("inv").addEventListener("click", function () {
 });
 
 document.getElementById("find").addEventListener("click", function () {
-  console.log("Finding game for you. Please wait :)");
+  console.log("Searching for game");
 });
 
 // LOCAL GAME SIMULATION
@@ -159,4 +154,40 @@ document.body.addEventListener("click", function (event) {
   }
 });
 
+// function start_game(){
 
+//   document.querySelector(".menu").style.opacity = 0;
+//   document.querySelector(".menu").style.visibility = "hidden";
+//   document.querySelector(".game-board").style.opacity = 1;
+//   document.querySelector(".game-board").style.visibility = "visible";
+
+//   for(const row of [3,2,1]){
+//     for(const column of [1,2,3]){
+//         let cell =  `<div class="cell" id="one" column="${column}" row="${row}" >`  +
+//                     `<span class="cell-inner" ></span>`+
+//                     `</div>`
+//         document.getElementById('game-board').innerHTML = document.getElementById('game-board').innerHTML + cell ;
+//     }
+//   }
+
+// }
+
+//LITOURGIES SERVER PROS CLIENT
+socket.onmessage = function(event) {
+  console.log(`[message] Data received from server: ${event.data}`);
+  let message = JSON.parse(event.data)
+  console.log(message.mtype)
+  if(message.mtype === 4){
+      start_game()
+      PLAYER = message.player
+  }else if(message.mtype === 6){
+    console.log(message)
+    play_move(message)
+  } else if(message.mtype === 10){
+    document.querySelector(".number-of-players").innerHTML = message.num_clients
+  }
+  //MESSAGE = {"mtype":MessageEnum.NUM_CLIENTS.value,"num_clients": len(CONNECTIONS)}
+  // WINNER LOGIC
+    // INVALID MOVE
+    // NUMBER OF CLIENTS
+};
