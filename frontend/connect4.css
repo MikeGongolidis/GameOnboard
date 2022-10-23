@@ -85,7 +85,7 @@ body {
   max-width: 50rem;
   padding: 0.5rem 5rem;
   visibility: visible;
-  transition: visibility 0.5s, opacity 0.5s;
+  transition: visibility 1s, opacity 0.2s;
   z-index:5
 }
 
@@ -96,6 +96,13 @@ body {
   letter-spacing: 1px;
   font-size: 4rem;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.menu-heading .players-online {
+  font-size: 2rem;
 }
 
 .menu-container {
@@ -133,11 +140,29 @@ body {
   height: 136px;
 }
 
+.loader {
+  margin: 10px auto;
+  height: 40px;
+  width: 40px;
+  border: 5px solid rgba(116, 116, 116, 0.717);
+  border-top-color: #6ba3ff;
+  border-radius: 50%;
+  animation: loading 1s infinite;
+}
+
+@keyframes loading {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 .back {
   background-color: var(--back-color);
   width: 100%;
   height: 136px;
 }
+
 
 .start-game:hover {
   background-color: var(--button-color-hover);
@@ -183,4 +208,39 @@ body {
 /* Testing empty square (top-left)*/
 #one:hover {
   background-color: #b7ffb7;
+}
+
+.box {
+  margin: 10px auto;
+  width: 150px;
+  height: 150px;
+  display: flex;
+}
+#img1 {
+    width:150px;
+    height:150px;
+    border-radius: 50%;
+    background-image: url("../assets/water_circle2.png");
+    background-position: center; /* Center the image */
+    background-size: contain;
+
+}
+
+#img2 {
+  width:150px;
+  height:150px;
+  border-radius: 50%;
+  background-image: url("../assets/fire_circle2.png");
+  background-position: center; /* Center the image */
+  background-size: contain;
+}
+
+.announcement {
+  margin: 10px auto;
+  height: 50px;
+  width: 150px;
+  border-radius: 5%;
+  font-size: 2.1rem;
+  font-family: "Roboto Mono", monospace;
+  text-align: center;
 }

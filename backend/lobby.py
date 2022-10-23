@@ -40,7 +40,8 @@ class LobbyRoom():
         self.rooms[room_id].add(player2)
         self.player_to_room_id[player2] = room_id
 
-        for player,code in zip(self.rooms[room_id],PlayerEnum.list()):
+        #This runs twice, once per player
+        for player,code in zip(self.rooms[room_id],[1,2]): 
             await player.send(json.dumps({"mtype":MessageEnum.START_GAME.value,"player": code}))
     
     def remove_room_id(self, player):
