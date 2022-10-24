@@ -36,10 +36,14 @@ document.getElementById("start").addEventListener("click", function () {
 
 document.getElementById("inv").addEventListener("click", function () {
   console.log("Player invite initiated");
+  socket.send(JSON.stringify(invite));
+  document.querySelector(".inv").innerHTML = '<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
 });
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Searching for game");
+  socket.send(JSON.stringify(find));
+  document.querySelector(".find").innerHTML = '<div class="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>'
 });
 
 // LOCAL GAME SIMULATION
@@ -63,96 +67,98 @@ let bottomRight = document.getElementById("nine");
 document.body.addEventListener("click", function (event) {
   if (topLeft.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-one").innerHTML = "X";
+      document.getElementById("cell-one").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-one").innerHTML = "O";
+      document.getElementById("cell-one").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("one").style.pointerEvents = "none";
     console.log("Cell one was selected");
   } else if (topMiddle.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-two").innerHTML = "X";
+      document.getElementById("cell-two").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-two").innerHTML = "O";
+      document.getElementById("cell-two").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("two").style.pointerEvents = "none";
     console.log("Cell two was selected");
   } else if (topRight.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-three").innerHTML = "X";
+      document.getElementById("cell-three").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-three").innerHTML = "O";
+      document.getElementById("cell-three").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("three").style.pointerEvents = "none";
     console.log("Cell three was selected");
   } else if (middleLeft.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-four").innerHTML = "X";
+      document.getElementById("cell-four").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-four").innerHTML = "O";
+      document.getElementById("cell-four").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("four").style.pointerEvents = "none";
     console.log("Cell four was selected");
   } else if (middle.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-five").innerHTML = "X";
+      document.getElementById("cell-five").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-five").innerHTML = "O";
+      document.getElementById("cell-five").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("five").style.pointerEvents = "none";
     console.log("Cell five was selected");
   } else if (middleRight.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-six").innerHTML = "X";
+      document.getElementById("cell-six").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-six").innerHTML = "O";
+      document.getElementById("cell-six").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("six").style.pointerEvents = "none";
     console.log("Cell six was selected");
   } else if (bottomLeft.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-seven").innerHTML = "X";
+      document.getElementById("cell-seven").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-seven").innerHTML = "O";
+      document.getElementById("cell-seven").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("seven").style.pointerEvents = "none";
     console.log("Cell seven was selected");
   } else if (bottomMiddle.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-eight").innerHTML = "X";
+      document.getElementById("cell-eight").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-eight").innerHTML = "O";
+      document.getElementById("cell-eight").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("eight").style.pointerEvents = "none";
     console.log("Cell eight was selected");
   } else if (bottomRight.contains(event.target)) {
     if (player_1_active === true) {
-      document.getElementById("cell-nine").innerHTML = "X";
+      document.getElementById("cell-nine").innerHTML = `<div class='img1' ></div>`;
       player_1_active = !player_1_active;
     } else {
-      document.getElementById("cell-nine").innerHTML = "O";
+      document.getElementById("cell-nine").innerHTML = `<div class='img2' ></div>`;
       player_1_active = !player_1_active;
     }
     document.getElementById("nine").style.pointerEvents = "none";
     console.log("Cell nine was selected");
   }
 });
+
+
 
 // function start_game(){
 
@@ -161,7 +167,7 @@ document.body.addEventListener("click", function (event) {
 //   document.querySelector(".game-board").style.opacity = 1;
 //   document.querySelector(".game-board").style.visibility = "visible";
 
-//   for(const row of [3,2,1]){
+//   for(const row of [2,1,0]){
 //     for(const column of [1,2,3]){
 //         let cell =  `<div class="cell" id="one" column="${column}" row="${row}" >`  +
 //                     `<span class="cell-inner" ></span>`+
@@ -176,8 +182,14 @@ document.body.addEventListener("click", function (event) {
 socket.onmessage = function(event) {
   console.log(`[message] Data received from server: ${event.data}`);
   let message = JSON.parse(event.data)
-  console.log(message.mtype)
-  if(message.mtype === 4){
+  if(message.mtype === 2){
+    if(message.room_id){
+      let URL = "http://localhost:5500/frontend/tic_tac_toe.html"
+      let value = `"${URL}?mtype=3&room_id=${message.room_id}"`
+      console.log(value)
+      navigator.clipboard.writeText(value)
+    }
+  }else if(message.mtype === 4){
       start_game()
       PLAYER = message.player
   }else if(message.mtype === 6){
@@ -191,3 +203,11 @@ socket.onmessage = function(event) {
     // INVALID MOVE
     // NUMBER OF CLIENTS
 };
+
+
+// GAME EVALUATION
+
+// when game ends do this
+// document.querySelector(".visibility").style.visibility = "visible";
+
+
