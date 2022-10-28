@@ -81,9 +81,9 @@ function play_move(message){
   function display_image(player){
     let img;
     if(player===1){
-      img = "<div class='box'><div id='#img1' ></div></div> ";
+      img = "<div class='box'><div id='img1' ></div></div> ";
     }else{
-      img = "<div class='box'><div id='#img2' ></div></div> ";
+      img = "<div class='box'><div id='img2' ></div></div> ";
     }
   
     return img
