@@ -15,7 +15,7 @@
 
 // Create the dictionary objects in js with the default communication messages.
 let find = {"mtype":5,"game_type":1};
-let play = {"mtype":6,"player":0, "column":"string","row":"string"};
+let play = {"mtype":6,"player":0, "column":0,"row":0};
 let invite = {"mtype":1, "game_type":1}
 let exit = {"mtype":7}
 let join = {"mtype":3,"room_id":'string'}
@@ -81,9 +81,9 @@ function play_move(message){
   function display_image(player){
     let img;
     if(player===1){
-      img = "<div class='box'><div id='img1' ></div></div> ";
+      img = "<div class='box'><div id='#img1' ></div></div> ";
     }else{
-      img = "<div class='box'><div id='img2' ></div></div> ";
+      img = "<div class='box'><div id='#img2' ></div></div> ";
     }
   
     return img
