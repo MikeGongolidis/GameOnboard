@@ -20,6 +20,8 @@ class MessageEnum(MyEnum):
     WINNER = 9
     NUM_CLIENTS = 10
     INVALID_MESSAGE = 11
+    EXIT_QUEUE = 12
+
 
 class GameEnum(MyEnum):
     TTT = 1

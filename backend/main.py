@@ -51,7 +51,7 @@ async def handler(player):
                 assert message.game_type 
                 await LOBBY.find_opponent(player, message.game_type)
 
-            elif message.mtype == MessageEnum.EXIT_GAME.value:
+            elif message.mtype == MessageEnum.EXIT_QUEUE.value:
 
                 LOBBY.remove_room_id(player) 
 

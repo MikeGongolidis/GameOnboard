@@ -17,30 +17,25 @@
   </head>
   <body>
     <h1 class="game-title">Connect4</h1>
-    <div class="game-board" id="game-board">
+    <div class="game-container">
+      <div class="game-board" id="game-board">
+      </div>
+      <div class="player-turn"></div> 
+
     </div>
     <div class="menu">
-      <div class="menu-heading">
-        <h3 class="">MENU</h3>
-        <h3 class="players-online">Players online: </h3>
-      </div>
-
       <div class="menu-container">
-        <div class="btn">
-          <button class="start-game" id="start">Start Local Game</button>
+        <div class="button-container">
+            <button class="btn find" id="find">Find Game</button>
+            <button class="btn inv" id="inv">Invite a Friend</button>
         </div>
-        <div class="btn btn-inv">
-          <button class="start-game inv" id="inv">Invite a Friend</button>
+        <div class="announcement-container">
+          <h3 class="players-online">Players online: </h3>
         </div>
-        <div class="btn btn-find">
-          <button class="start-game find" id="find">Find Game</button>
-        </div>
-        <div class="btn btn-back">
-          <button class="start-game back" id="back">Back</button>
-        </div>
+        <button class="btn back" id="back">🔙 Go Back!</button>
       </div>
 
     </div>
   </body>
-  <script type="text/javascript" src="connect4.js"></script>
+  <script type="module" src="connect4.js"></script>
 </html>
