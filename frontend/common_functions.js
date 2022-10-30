@@ -1,4 +1,5 @@
-function announce_winner(message, current_player){
+
+function announce_winner_draw(message, current_player){
 
     // Pause board
     document.querySelector(".game-board").style["pointer-events"] =  "none";
@@ -9,7 +10,13 @@ function announce_winner(message, current_player){
     winner_announcement_container.classList.add('winner-annc-container');
 
     let announcement = document.createElement('h3');
-    announcement.innerHTML = (message.player == current_player) ? 'Lucky you, you won!' : 'You lost, you piece of shit!';
+    if(message.mtype === 13){
+      announcement.innerHTML = 'That is a fair draw...';
+
+    }else{
+      announcement.innerHTML = (message.player == current_player) ? 'Lucky you, you won!' : 'You lost, you piece of shit!';
+    }
+
 
     // Button to enable play again.
     let button_back = document.createElement('button');
@@ -65,8 +72,9 @@ function reset_original_menu(){
 // Build the game board and start the game
 function start_game(game_type, player){
 
-    function create_cell(column, row){
-      return `<div class="cell" column="${column}" row="${row}" ></div>`
+    function create_cell(column, row, game_type){
+      let cell_class = (game_type == 2 ) ? 'c4-cell' : 'ttt-cell'
+      return `<div class="${cell_class}" column="${column}" row="${row}" ></div>`
     }
 
 
@@ -81,21 +89,21 @@ function start_game(game_type, player){
     
     let rows = [];
     let columns = [];
-    if(game_type === 2){
+    if(game_type == 2){
       rows = [5,4,3,2,1,0];
       columns = [0,1,2,3,4,5,6];
-      game_board.classList.add("gb-c4");
+      game_board.style['grid'] = 'repeat(6, 1fr) / repeat(7, 1fr)';
 
     } else {
       rows = [2,1,0];
       columns = [0,1,2];
-      game_board.classList.add("gb-ttt");
+      game_board.style['grid'] = 'repeat(3, 1fr) / repeat(3, 1fr)';
 
     }
 
     for(const row of rows){
       for(const column of columns){
-        document.getElementById('game-board').innerHTML += create_cell(column, row) ;
+        document.getElementById('game-board').innerHTML += create_cell(column, row, game_type) ;
       }
     }
 
@@ -132,9 +140,9 @@ function draw_move(message, current_player){
     cell.appendChild(display_image(message.player));   
     
     // 2. Change the player turn string
-    let whoseTurnMessage = (message.player === current_player) ? 'Stupid move...Now wait for your turn!' : 'Hurry up and play... we are waiting!';
+    let whoseTurnMessage = (message.player === current_player) ? 'Wait for your turn!' : 'Hurry up... we are waiting!';
     document.querySelector('.player-turn').innerHTML = whoseTurnMessage;
 
   }
 
-export {announce_winner, start_game, draw_move, reset_original_menu};
+export {announce_winner_draw, start_game, draw_move, reset_original_menu};

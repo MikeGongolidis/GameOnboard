@@ -21,6 +21,7 @@ class MessageEnum(MyEnum):
     NUM_CLIENTS = 10
     INVALID_MESSAGE = 11
     EXIT_QUEUE = 12
+    DRAW = 13
 
 
 class GameEnum(MyEnum):

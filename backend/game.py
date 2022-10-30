@@ -7,6 +7,7 @@ class Game(ABC):
     def __init__(self):
         self.moves = []
         self.winner = None
+        self.draw = False
         self.player1 = PlayerEnum.PLAYER1.value
         self.player2 = PlayerEnum.PLAYER2.value
     
@@ -64,6 +65,11 @@ class Connect4(Game):
         if self.winner is None and self.last_player_won():
             self.winner = self.last_player
 
+        available_slots = 42 - sum(self.top)
+                    
+        if available_slots == 0 and not self.last_player_won():
+            self.draw = True 
+
         return player, column, row
 
 class TicTacToe(Game):
@@ -71,6 +77,7 @@ class TicTacToe(Game):
     def __init__(self):
         super().__init__()
         self.board = [[0 for _ in range(3)] for _ in range(3)]
+        
 
 
     def last_player_won(self):
@@ -119,7 +126,17 @@ class TicTacToe(Game):
 
         self.board[column][row] = player
 
+
         if self.winner is None and self.last_player_won():
             self.winner = self.last_player
+
+        available_slots = 9
+        for rows in self.board:
+            for item in rows:
+                if item != 0:
+                    available_slots = available_slots - 1
+
+        if available_slots == 0 and not self.last_player_won():
+            self.draw = True 
 
         return player, column, row

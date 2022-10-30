@@ -53,6 +53,10 @@ async def handler(player):
 
             elif message.mtype == MessageEnum.EXIT_QUEUE.value:
 
+                LOBBY.exit_queue(player, message)
+
+            elif message.mtype == MessageEnum.EXIT_GAME.value:
+
                 LOBBY.remove_room_id(player) 
 
             elif message.mtype == MessageEnum.PLAY.value:
@@ -76,7 +80,11 @@ async def handler(player):
                 if LOBBY.games[room_id].winner:
                     winner_event = json.dumps({"mtype":MessageEnum.WINNER.value,"player":LOBBY.games[room_id].winner})
                     websockets.broadcast(LOBBY.rooms[room_id], winner_event)
-    
+                
+                #If there is a draw, broadcast to everyone
+                if LOBBY.games[room_id].draw:
+                    draw_event = json.dumps({"mtype":MessageEnum.DRAW.value})
+                    websockets.broadcast(LOBBY.rooms[room_id], draw_event)
     finally:
         # Unregister player if connection closes
         CONNECTIONS.remove(player)
