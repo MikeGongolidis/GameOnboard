@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "we are connected"
+sudo apt-get install -y nginx
