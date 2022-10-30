@@ -211,7 +211,7 @@ body {
   font-size: 1.6rem;
 }
 
-.img1 {
+#img1 {
   width:150px;
   height:150px;
   border-radius: 50%;
@@ -221,7 +221,7 @@ body {
 
 }
 
-.img2 {
+#img2 {
 width:150px;
 height:150px;
 border-radius: 50%;

@@ -52,14 +52,14 @@ document.getElementById("start").addEventListener("click", function () {
 
 document.getElementById("inv").addEventListener("click", function () {
   console.log("Player invite initiated");
-  socket.send(JSON.stringify(invite));
   document.querySelector(".inv").innerHTML = loader;
+  socket.send(JSON.stringify(invite));
 });
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Searching for game");
-  socket.send(JSON.stringify(find));
   document.querySelector(".find").innerHTML = loader;
+  socket.send(JSON.stringify(find));
 });
 
 // LOCAL GAME SIMULATION
