@@ -3,13 +3,13 @@ import json
 import asyncio
 import websockets
 import logging
-
+import signal
 
 from lobby import LobbyRoom
 from communication import MessageModel, MessageEnum
 
 DOMAIN = 'localhost'
-PORT = 8765
+PORT = f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
 LOBBY = LobbyRoom()
 CONNECTIONS = set()
 
@@ -95,7 +95,12 @@ async def handler(player):
 
 async def main():
 
-    async with websockets.serve(handler,DOMAIN,PORT):
+    # Set the stop condition when receiving SIGTERM.
+    loop = asyncio.get_running_loop()
+    stop = loop.create_future()
+    loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
+
+    async with websockets.unix_serve(handler,path=PORT):
         await asyncio.Future()
 
 if __name__ == "__main__":
