@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker-compose stop
+/opt/bin/docker-compose stop
