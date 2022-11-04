@@ -1,5 +1,5 @@
 #!/bin/bash
-set -xe
+set -e
 
 
 /usr/local/bin/docker-compose stop
