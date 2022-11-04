@@ -8,8 +8,8 @@ import signal
 from lobby import LobbyRoom
 from communication import MessageModel, MessageEnum
 
-DOMAIN = 'localhost'
-PORT = f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
+DOMAIN = ''
+PORT = 8765#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
 LOBBY = LobbyRoom()
 CONNECTIONS = set()
 
@@ -103,5 +103,12 @@ async def main():
     async with websockets.unix_serve(handler,path=PORT):
         await asyncio.Future()
 
+    # async with websockets.serve(handler,DOMAIN,PORT):
+    #     await asyncio.Future()
+
 if __name__ == "__main__":
     asyncio.run(main())
+
+    # asyncio.get_event_loop().run_until_complete(
+    #     websockets.serve(handler, '0.0.0.0', 8765))
+    # asyncio.get_event_loop().run_forever()
