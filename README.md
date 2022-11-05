@@ -27,5 +27,7 @@ It is deployed with nginx as a reverse proxy via docker-compose.
 2. CSS: Improve play animations.
 3. HTML: Display error when trying to join wrong room.
 4. Re-write frond end with React + SCSS.
+5. Make backend secure
+6. Fix copy to clipboard for Secure server
 
 
