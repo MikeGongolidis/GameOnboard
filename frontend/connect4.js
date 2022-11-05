@@ -166,8 +166,6 @@ socket.onmessage = function(event) {
       //TODO:
       announce_winner(message);
     }else if(message.mtype === 8){
-      //TODO:
-      //invalid_move();
       console.log('invalid_move')
     }
   }

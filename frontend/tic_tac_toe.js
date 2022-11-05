@@ -15,7 +15,7 @@
 
 // Create the dictionary objects in js with the default communication messages.
 let find = {"mtype":5,"game_type":1};
-let play = {"mtype":6,"player":0, "column":0,"row":0};
+let play = {"mtype":6,"player":0, "column":"string","row":"string"};
 let invite = {"mtype":1, "game_type":1}
 let exit = {"mtype":7}
 let join = {"mtype":3,"room_id":'string'}
@@ -36,7 +36,7 @@ function start_game(){
         let cell =  `<div class="cell" id="one" column="${column}" row="${row}" >`  +
                     `<span class="cell-inner" ></span>`+
                     `</div>`
-        document.getElementById('game-board').innerHTML = document.getElementById('game-board').innerHTML + cell ;
+        document.getElementById('game-board').innerHTML += cell ;
     }
   }
 
@@ -50,19 +50,22 @@ document.getElementById("start").addEventListener("click", function () {
   start_game()
 });
 
-document.getElementById("inv").addEventListener("click", function () {
+document.getElementById("inv").addEventListener("click", function (e) {
   console.log("Player invite initiated");
-  document.querySelector(".inv").innerHTML = loader;
+  // document.querySelector(".inv").innerHTML = loader;
+
   socket.send(JSON.stringify(invite));
 });
 
 document.getElementById("find").addEventListener("click", function () {
   console.log("Searching for game");
   document.querySelector(".find").innerHTML = loader;
+
   socket.send(JSON.stringify(find));
 });
 
 // LOCAL GAME SIMULATION
+
 
 document.getElementById('game-board').addEventListener("click", function (e) {
   // IMPLEMENT HERE...
@@ -72,6 +75,7 @@ document.getElementById('game-board').addEventListener("click", function (e) {
   play.player = PLAYER
 
   console.log(play)
+
   socket.send(JSON.stringify(play))
 
 })
@@ -123,11 +127,10 @@ socket.onmessage = function(event) {
     play_move(message)
   } else if(message.mtype === 10){
     document.querySelector(".number-of-players").innerHTML = message.num_clients
+  }else if(message.mtype === 8){
+    console.log('invalid_move')
   }
   //MESSAGE = {"mtype":MessageEnum.NUM_CLIENTS.value,"num_clients": len(CONNECTIONS)}
-  // WINNER LOGIC
-    // INVALID MOVE
-    // NUMBER OF CLIENTS
 };
 
 
