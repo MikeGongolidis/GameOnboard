@@ -31,6 +31,6 @@ jobs:
 
       - name: Sync files in dev bucket
         run: >-
-        aws s3 sync frontend/ s3://gameonboard-frontend/frontend/ 
-        aws s3 cp frontend/index.html s3://gameonboard-frontend/ 
-        aws s3 sync assets/ s3://gameonboard-frontend/assets/ 
+          aws s3 sync frontend/ s3://gameonboard-frontend/frontend/ 
+          aws s3 cp frontend/index.html s3://gameonboard-frontend/ 
+          aws s3 sync assets/ s3://gameonboard-frontend/assets/ 
