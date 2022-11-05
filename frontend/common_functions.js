@@ -145,4 +145,15 @@ function draw_move(message, current_player){
 
   }
 
-export {announce_winner_draw, start_game, draw_move, reset_original_menu};
+  function getWebSocketServer() {
+    console.log(`Connecting to ${window.location.host}`);
+    if (window.location.host === "gameonboard-frontend.s3-website.eu-central-1.amazonaws.com/") {
+      return "ws://52.59.191.206:5000";
+    } else if (window.location.host === "localhost:5500") {
+      return "ws://localhost:8765/";
+    } else {
+      throw new Error(`Unsupported host: ${window.location.host}`);
+    }
+  }
+
+export {announce_winner_draw, start_game, draw_move, reset_original_menu, getWebSocketServer};
