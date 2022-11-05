@@ -1,7 +1,7 @@
 //Import common functions from module
 import {announce_winner_draw, start_game, draw_move, reset_original_menu} from "./common_functions.js"
 
-let socket = new WebSocket("ws://127.0.0.1:8765");
+let socket = new WebSocket("ws://52.59.191.206:5000");
 let PLAYER;
 let GAME_TYPE = 2;
 
