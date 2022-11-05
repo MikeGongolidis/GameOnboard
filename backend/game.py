@@ -70,7 +70,8 @@ class TicTacToe(Game):
 
     def __init__(self):
         super().__init__()
-        self.board = [[0 for _ in range(3)] for _ in range(3)]
+        self.board = [[0 for _ in range(3)] for _ in range(3)] 
+        # [[0,0,0],[0,0,0],[0,0,0]]
 
 
     def last_player_won(self):

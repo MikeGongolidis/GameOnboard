@@ -32,7 +32,7 @@ function start_game(){
   document.querySelector(".game-board").style.visibility = "visible";
 
   for(const row of [2,1,0]){
-    for(const column of [1,2,3]){
+    for(const column of [0,1,2]){
         let cell =  `<div class="cell" id="one" column="${column}" row="${row}" >`  +
                     `<span class="cell-inner" ></span>`+
                     `</div>`
