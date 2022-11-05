@@ -34,13 +34,13 @@ socket.onopen = function(event){
     document.querySelector('.game-title').innerHTML = (GAME_TYPE == 1 ) ? 'Tic-Tac-Toe' : 'Connect 4';
   }else {
     // Otherwise go back to select which game you want to play
-    window.location.replace("http://gameonboard-frontend.s3-website.eu-central-1.amazonaws.com/index.html");
+    window.location.replace(`http://${window.location.host}/frontend/index.html`);
   }
 };
 
 
 document.getElementById("back").addEventListener("click", function () {
-  location.href = "http://gameonboard-frontend.s3-website.eu-central-1.amazonaws.com/index.html";
+  location.href = `http://${window.location.host}/frontend/index.html`;
 });
 
 // INVITE A FRIEND
