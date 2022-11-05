@@ -8,7 +8,7 @@ import signal
 from lobby import LobbyRoom
 from communication import MessageModel, MessageEnum
 
-DOMAIN = 'localhost'
+DOMAIN = ''
 PORT = 8765#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
 LOBBY = LobbyRoom()
 CONNECTIONS = set()
@@ -106,10 +106,10 @@ async def handler(player):
 
 async def main():
 
-    # Set the stop condition when receiving SIGTERM.
-    loop = asyncio.get_running_loop()
-    stop = loop.create_future()
-    loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
+    # # Set the stop condition when receiving SIGTERM.
+    # loop = asyncio.get_running_loop()
+    # stop = loop.create_future()
+    # loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
 
     # async with websockets.unix_serve(handler,path=PORT):
     #     await asyncio.Future()
