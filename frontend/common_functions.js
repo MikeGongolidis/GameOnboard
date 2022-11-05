@@ -150,7 +150,7 @@ function draw_move(message, current_player){
     if (window.location.host === "gameonboard-frontend.s3-website.eu-central-1.amazonaws.com") {
       return "ws://52.59.191.206:5000";
     } else if (window.location.host === "127.0.0.1:5500" || window.location.host === "localhost:5500" ) {
-      return "ws://localhost:8055/";
+      return "ws://localhost:8765/";
     } else {
       throw new Error(`Unsupported host: ${window.location.host}`);
     }
