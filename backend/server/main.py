@@ -8,8 +8,8 @@ import signal
 from lobby import LobbyRoom
 from communication import MessageModel, MessageEnum
 
-DOMAIN = ''
-PORT = 8765#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
+DOMAIN = 'localhost'
+PORT = 8055#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
 LOBBY = LobbyRoom()
 CONNECTIONS = set()
 
@@ -39,17 +39,28 @@ async def handler(player):
             if message.mtype == MessageEnum.INVITE.value:
 
                 assert message.game_type
-                await LOBBY.create_private_room(player, message.game_type)
+                room_id =  LOBBY.create_private_room(player, message.game_type)
+
+                await player.send(json.dumps({"mtype":MessageEnum.WAIT.value,"room_id":room_id}))
                 
             elif message.mtype == MessageEnum.JOIN.value:
 
                 assert message.room_id in LOBBY.rooms
-                await LOBBY.add_player2_in_private_room_and_start_game(player, message.room_id)
+                players =  LOBBY.add_player2_in_private_room_and_start_game(player, message.room_id)
+
+                for player, code in players: 
+                    await player.send(json.dumps({"mtype":MessageEnum.START_GAME.value,"player": code}))
 
             elif message.mtype == MessageEnum.FIND.value:
 
                 assert message.game_type 
-                await LOBBY.find_opponent(player, message.game_type)
+                players =  LOBBY.find_opponent(player, message.game_type)
+
+                if players is None:
+                    await player.send(json.dumps({"mtype":MessageEnum.WAIT.value}))
+                else:
+                    for player,code in players: 
+                        await player.send(json.dumps({"mtype":MessageEnum.START_GAME.value,"player": code}))
 
             elif message.mtype == MessageEnum.EXIT_QUEUE.value:
 
@@ -100,11 +111,11 @@ async def main():
     stop = loop.create_future()
     loop.add_signal_handler(signal.SIGTERM, stop.set_result, None)
 
-    async with websockets.unix_serve(handler,path=PORT):
-        await asyncio.Future()
-
-    # async with websockets.serve(handler,DOMAIN,PORT):
+    # async with websockets.unix_serve(handler,path=PORT):
     #     await asyncio.Future()
+
+    async with websockets.serve(handler,DOMAIN,PORT):
+        await asyncio.Future()
 
 if __name__ == "__main__":
     asyncio.run(main())

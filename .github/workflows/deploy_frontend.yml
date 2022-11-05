@@ -1,6 +1,10 @@
 name: Deploy Front-end to S3
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  push:
+    paths:
+      - frontend/**
+      - assets/**
 
 permissions:
       id-token: write   # This is required for requesting the JWT

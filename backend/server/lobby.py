@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 def put(dictionary,item):
     dictionary[item] = 1
 
-
 class LobbyRoom():
 
     def __init__(self):
@@ -23,7 +22,7 @@ class LobbyRoom():
         self.games = {}
         self.player_to_room_id = {}
 
-    async def create_private_room(self, player1, game_type):
+    def create_private_room(self, player1, game_type):
         """
         Creates a new room with a unique id, adds the room in the rooms dictionary
         and returns the room_id.
@@ -38,17 +37,16 @@ class LobbyRoom():
         
         self.player_to_room_id[player1] = room_id
 
-        await player1.send(json.dumps({"mtype":MessageEnum.WAIT.value,"room_id":room_id}))
-
+        return room_id
     
-    async def add_player2_in_private_room_and_start_game(self, player2, room_id:str):
+    def add_player2_in_private_room_and_start_game(self, player2, room_id:str):
 
         self.rooms[room_id].add(player2)
         self.player_to_room_id[player2] = room_id
 
         #This runs twice, once per player
-        for player,code in zip(self.rooms[room_id],[1,2]): 
-            await player.send(json.dumps({"mtype":MessageEnum.START_GAME.value,"player": code}))
+        return [(player,code) for player,code in zip(self.rooms[room_id],[1,2])]
+
     
     def remove_room_id(self, player):
 
@@ -62,26 +60,23 @@ class LobbyRoom():
         del self.games[room_id]
         logger.info(f'Number of rooms after: {len(self.rooms)}')
 
-    async def find_opponent(self, player, game_type):
+    def find_opponent(self, player, game_type):
 
         try:
             if player in self.ttt_queue or player in self.c4_queue:
-                await player.send(json.dumps({"mtype":MessageEnum.WAIT.value}))
-                return
+                return None
                 
             player1 = self.ttt_queue.popitem(last=False)[0] if game_type == GameEnum.TTT.value else self.c4_queue.popitem(last=False)[0]
 
-            await self.create_private_room(player1, game_type)
+            room_id = self.create_private_room(player1, game_type)
 
-            room_id = self.player_to_room_id[player1]
-
-            await self.add_player2_in_private_room_and_start_game(player, room_id)
+            return self.add_player2_in_private_room_and_start_game(player, room_id)
 
         except KeyError:
 
             put(self.ttt_queue,player) if game_type == GameEnum.TTT.value else put(self.c4_queue,player)
 
-            await player.send(json.dumps({"mtype":MessageEnum.WAIT.value}))
+            return None
 
     
     def exit_queue(self, player, message):

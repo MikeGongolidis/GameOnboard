@@ -138,7 +138,7 @@ socket.onmessage = function(event) {
     if(message.mtype === 2){
     // On WAIT
       if(message.room_id){
-        let URL = "http://localhost:5500/frontend/game.html"
+        let URL = `http://${window.location.host}/frontend/game.html`
 
 
         let text = document.createElement('h3') ;
@@ -177,6 +177,7 @@ socket.onmessage = function(event) {
         announcement_container.append(text,input,copyonClipboard,button_exit)
 
         document.querySelector('#clipboardButton').addEventListener('click', function(event){
+          console.log("Copy button clicked!")
           let text = document.querySelector("#inviteCopyLink").getAttribute('value');
           console.log(text);
           navigator.clipboard.writeText(text).then(function() {

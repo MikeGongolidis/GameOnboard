@@ -41,5 +41,14 @@ class MessageModel(BaseModel):
     room_id: Optional[str]
     num_clients: Optional[int]
          
-        
+    @validator('column')
+    def column_must_be_restricted(cls, v):
+        if v not in range(0,7):
+            raise ValueError('column out of bounds')
+        return v.title()
 
+    @validator('row')
+    def row_must_be_restricted(cls, v):
+        if v not in range(0,7):
+            raise ValueError('row out of bounds')
+        return v.title()

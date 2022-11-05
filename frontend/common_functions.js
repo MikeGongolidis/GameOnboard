@@ -11,10 +11,10 @@ function announce_winner_draw(message, current_player){
 
     let announcement = document.createElement('h3');
     if(message.mtype === 13){
-      announcement.innerHTML = 'That is a fair draw...';
+      announcement.innerHTML = 'That was a fair draw...';
 
     }else{
-      announcement.innerHTML = (message.player == current_player) ? 'Lucky you, you won!' : 'You lost, you piece of shit!';
+      announcement.innerHTML = (message.player == current_player) ? 'Lucky you, you won!' : 'You lost! Try again!';
     }
 
 
@@ -146,11 +146,11 @@ function draw_move(message, current_player){
   }
 
   function getWebSocketServer() {
-    console.log(`Connecting to ${window.location.host}`);
+    console.log(`Running on ${window.location.host}`);
     if (window.location.host === "gameonboard-frontend.s3-website.eu-central-1.amazonaws.com") {
       return "ws://52.59.191.206:5000";
-    } else if (window.location.host === "localhost:5500") {
-      return "ws://localhost:8765/";
+    } else if (window.location.host === "127.0.0.1:5500" || window.location.host === "localhost:5500" ) {
+      return "ws://localhost:8055/";
     } else {
       throw new Error(`Unsupported host: ${window.location.host}`);
     }
