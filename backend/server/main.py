@@ -9,7 +9,7 @@ from lobby import LobbyRoom
 from communication import MessageModel, MessageEnum
 
 DOMAIN = ''
-PORT = 8765#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
+PORT = 8080#f"{os.environ['SUPERVISOR_PROCESS_NAME']}.sock"
 LOBBY = LobbyRoom()
 CONNECTIONS = set()
 

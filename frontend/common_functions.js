@@ -123,10 +123,10 @@ function draw_move(message, current_player){
       img.classList.add("myImg")
 
       if(player===1){
-        img.src = 'assets/fire_circle2.png';
+        img.src = '../assets/fire_circle2.png';
         img.classList.add("fire")
       }else{
-        img.src = 'assets/water_circle2.png';
+        img.src = '../assets/water_circle2.png';
         img.classList.add("water")
       }
       return img
