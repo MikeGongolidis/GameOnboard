@@ -1,0 +1,19 @@
+version: '2.4'
+services: 
+    wsserver:
+        restart: always
+        ports: 
+            - 8765:8765
+        build: 
+            context: ./backend/server
+            dockerfile: Dockerfile   
+    ngproxy:
+        image: nginx
+        ports: 
+            - 8020:80
+            - 5000:5000
+        restart: always
+        depends_on:
+            - wsserver
+        volumes:
+            - ./backend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro

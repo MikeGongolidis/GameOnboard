@@ -1,0 +1,33 @@
+name: Deploy Front-end to S3
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    paths:
+      - frontend/**
+      - assets/**
+
+permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+
+jobs:
+  Deploy-frontend-S3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Connect to AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::341986208950:role/github-gameonboard #${{ secrets.IAMROLE_GITHUB }}
+          role-session-name: GitHub-Action-Role
+          aws-region: eu-central-1
+
+      - name: Sync files in dev bucket
+        run: |
+          aws s3 sync frontend/ s3://gameonboard-frontend/frontend/ 
+          aws s3 cp frontend/script.js s3://gameonboard-frontend/ 
+          aws s3 cp frontend/index.html s3://gameonboard-frontend/ 
+          aws s3 cp frontend/style.css s3://gameonboard-frontend/ 
+          aws s3 sync assets/ s3://gameonboard-frontend/assets/ 

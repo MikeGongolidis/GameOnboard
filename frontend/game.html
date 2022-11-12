@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link href="https://css.gg/games.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="game.css" />
+
+    <title>GamePage</title>
+  </head>
+  <body>
+    <h1 class="game-title">Connect4</h1>
+    <div class="game-container">
+      <div class="game-board" id="game-board"></div>
+      <div class="player-turn"></div> 
+    </div>
+    <div class="menu">
+      <div class="menu-container">
+        <div class="button-container">
+            <button class="btn find" id="find">Find Game</button>
+            <button class="btn inv" id="inv">Invite a Friend</button>
+        </div>
+        <div class="announcement-container">
+          <h3 class="players-online">Players online: </h3>
+        </div>
+        <button class="btn back" id="back">🔙 Go Back!</button>
+      </div>
+
+    </div>
+  </body>
+  <script type="module" src="game.js"></script>
+</html>

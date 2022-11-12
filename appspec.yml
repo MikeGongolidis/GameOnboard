@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: backend/
+    destination: backend/
+  - source: docker-compose.yml
+    destination: /
+file_exists_behavior: OVERWRITE
+hooks:
+  ApplicationStop:
+    - location: codedeploy/stop-server.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: codedeploy/start-server.sh
+      timeout: 300
+      runas: root
+  # ValidateService:
+  #   - location: aws/scripts/validate-service.sh
+  #     timeout: 300
+  #     runas: root
+
