@@ -31,7 +31,8 @@ async def handler(player):
             # Try to parse incoming message
             try:
                 message = MessageModel(**json.loads(event))
-            except Exception:
+            except Exception as e:
+                print(e)
                 # If message is invalid, let the client know
                 await player.send(json.dumps({"mtype":MessageEnum.INVALID_MESSAGE.value}))
                 continue
